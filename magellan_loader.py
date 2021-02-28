@@ -63,8 +63,8 @@ def plot_environment(env):
     return ax
 
 def plot_paths(x, envs):
-import warnings    
-warnings.simplefilter('ignore')
+    import warnings    
+    warnings.simplefilter('ignore')
 
     def plotter(data, ax, ind_gen, scale=4):
         i, j = next(ind_gen)
