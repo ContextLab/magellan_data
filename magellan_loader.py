@@ -62,6 +62,24 @@ def plot_environment(env):
     ax.set_ylim([-0.5, height + 0.5])
     return ax
 
+def plot_envs(envs, size, scale=4):
+    fig, ax = mpl.pyplot.subplots(nrows=size[0], ncols=size[1], figsize=(scale * size[1], scale * size[0]))
+    for i, e in enumerate(np.unique(list(envs.keys()))): #quick way to get environments in sorted order
+        mpl.pyplot.axes(ax.ravel()[i])
+        a = ml.plot_environment(envs[e])
+        a.set_title(f'Layout {e}')
+
+        if i < (np.prod(size) - size[1]): #bottommost row
+            a.set_xlabel(None)
+
+        if i not in np.arange(0, np.prod(size), size[1]): #leftmost column
+            a.set_ylabel(None)
+
+    for a in ax.ravel()[(i + 1):]:
+        a.set_visible(False)
+    
+    return fix, ax
+
 def plot_paths(x, envs, scale=4):
     import warnings    
     warnings.simplefilter('ignore')
