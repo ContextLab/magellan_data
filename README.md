@@ -80,6 +80,19 @@ Inputs:
 Outputs:
 - `ax`: a `matplotlib` axis handle for the resulting figure
 
+### `plot_envs`: plot a set of environments by calling plot_environment several times
+
+Inputs:
+- `envs`: a dictionary whose keys are environment names and whose values are DataFrames for the corresponding environments.  If `root` is the current directory (containing this repository), then `envs` may be generated as follows:
+```python
+from glob import glob as lsdir
+
+root = 'magellan_data'
+envs = {os.path.split(e)[-1].split('.')[0]: ml.load_env(e) for e in lsdir(os.path.join(root, 'env', '?.json'))}
+```
+- `size`: a 2-element list or array specifying the number of rows (`size[0]`) and columns (`size[1]`) of subplots to create
+- `scale`: optional argument specifying how large to draw each environment in the resulting figure (default: 4)
+
 ## Functions for loading in or displaying information about *behavioral data*
 
 ### `load_subj_data`: load in one subject's behavioral data from their json file
@@ -138,15 +151,7 @@ The resulting figure contains one subplot per session and environment, each cont
 
 Inputs:
 - `data`: a DataFrame containing one subject's data.  Note: the `subj` column is not checked; strange results may be generated if data from multiple subjects are included.
-- `envs`: a dictionary whose keys are environment names and whose values are DataFrames for the corresponding environments.  If `root` is the current directory (containing this repository), then `envs` may be generated as follows:
-
-```python
-import magellan_loader as ml
-from glob import glob as lsdir
-
-root = 'magellan_data'
-envs = {os.path.split(e)[-1].split('.')[0]: ml.load_env(e) for e in lsdir(os.path.join(root, 'env', '?.json'))}
-```
+- `envs`: a dictionary whose keys are environment names and whose values are DataFrames for the corresponding environments.
 - `scale`: optional argument specifying how large to draw each environment in the resulting figure (default: 4)
 
 Outputs:
