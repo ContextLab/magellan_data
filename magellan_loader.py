@@ -120,7 +120,7 @@ def plot_paths(x, envs):
 
         try:
             if i == ax.shape[0] - 1:
-            a.set_xlabel(f'Environment {j}')
+                a.set_xlabel(f'Environment {j}')
         except:
             a.set_xlabel(f'Environment {j}')
 
