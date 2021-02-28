@@ -62,11 +62,11 @@ def plot_environment(env):
     ax.set_ylim([-0.5, height + 0.5])
     return ax
 
-def plot_paths(x, envs):
+def plot_paths(x, envs, scale=4):
     import warnings    
     warnings.simplefilter('ignore')
 
-    def plotter(data, ax, ind_gen, scale=4):
+    def plotter(data, ax, ind_gen):
         i, j = next(ind_gen)
         
         deliveries = get_conditions(data, ['delivery'])
