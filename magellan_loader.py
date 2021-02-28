@@ -66,7 +66,7 @@ def plot_envs(envs, size, scale=4):
     fig, ax = mpl.pyplot.subplots(nrows=size[0], ncols=size[1], figsize=(scale * size[1], scale * size[0]))
     for i, e in enumerate(np.unique(list(envs.keys()))): #quick way to get environments in sorted order
         mpl.pyplot.axes(ax.ravel()[i])
-        a = ml.plot_environment(envs[e])
+        a = plot_environment(envs[e])
         a.set_title(f'Layout {e}')
 
         if i < (np.prod(size) - size[1]): #bottommost row
