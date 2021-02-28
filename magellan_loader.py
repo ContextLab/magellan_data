@@ -78,7 +78,7 @@ def plot_envs(envs, size, scale=4):
     for a in ax.ravel()[(i + 1):]:
         a.set_visible(False)
     
-    return fix, ax
+    return fig, ax
 
 def plot_paths(x, envs, scale=4):
     import warnings    
